@@ -111,6 +111,20 @@ class _SigninState extends State<Signin> {
                         return null;
                       },
                     ),
+                    SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: _resetPassword,
+                        child: Text(
+                          "Forgot Password?",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 0, 102, 102), // Peacock green
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -205,6 +219,33 @@ class _SigninState extends State<Signin> {
           );
         }
       }
+    }
+  }
+
+  void _resetPassword() async {
+    if (_emailController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please enter your email to reset your password.'),
+        ),
+      );
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _emailController.text);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Password reset link sent! Check your email.'),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.message ?? 'An error occurred. Please try again.'),
+        ),
+      );
     }
   }
 }

@@ -210,7 +210,7 @@ class _SignupState extends State<Signup> {
           password: _passwordController.text,
         );
 
-        // Store admin data in Firebase
+        // Store user data in Firebase
         await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential.user!.uid)
@@ -219,10 +219,10 @@ class _SignupState extends State<Signup> {
           'email': _emailController.text,
         });
 
-        // Navigate to admin screen
+        // Redirect to the sign-in page after successful sign-up
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => Signin()),
         );
       } on FirebaseAuthException catch (e) {
         setState(() {
