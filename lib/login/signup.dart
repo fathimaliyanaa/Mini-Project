@@ -1,5 +1,5 @@
-import 'package:Turfease/home_screen.dart';
 import 'package:Turfease/login/signin.dart';
+import 'package:Turfease/client/home_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -210,7 +210,7 @@ class _SignupState extends State<Signup> {
           password: _passwordController.text,
         );
 
-        // Store user data in Firebase
+        // Store admin data in Firebase
         await FirebaseFirestore.instance
             .collection('users')
             .doc(userCredential.user!.uid)
@@ -219,10 +219,10 @@ class _SignupState extends State<Signup> {
           'email': _emailController.text,
         });
 
-        // Redirect to the sign-in page after successful sign-up
+        // Navigate to admin screen
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Signin()),
+          MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       } on FirebaseAuthException catch (e) {
         setState(() {
