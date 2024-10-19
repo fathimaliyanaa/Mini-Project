@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1066263696563",
+    "project_id": "turfease-a5d3b",
+    "storage_bucket": "turfease-a5d3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066263696563:android:b0626ad85844fc82fa8cc6",
+        "android_client_info": {
+          "package_name": "com.example.turfease"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZIgi-jRakKpaSUwSnX8Ka_QhNGiQeJRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
